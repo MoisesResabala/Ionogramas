@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto de Grado</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+  <h1> Ionogramas</h1>
+  <div class="primeros">
+    <label style="background-color: yellow; position: relative;">
+      Archivo:
+      <select name="archivo" width="300px" onchange="cambioArchivo();">
+        {% for elemento in files %}
+        <option value="{{ elemento }}" {% if elemento == archivo %} selected {% endif %}>{{ elemento }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label style="background-color: palevioletred;">
+      Ionograma (Entre 1 y 96):
+      <input name="iono" value="{{iono}}" type="number" width="5px" min="1" max={{maxIono}} onchange="cambioIono();">
+    </label>
+  </div>
+  <div class="segundos">
+    <label class="label" style="background-color: green;">
+      <input type="checkbox" id="foE" onclick="cambio_foE()">foE
+    </label>
+    <label class="label" style="background-color: red;">
+      <input type="checkbox" id="foF" onclick="cambio_foF()">foF
+    </label>
+    <label class="label" style="background-color: blue;">
+      <input type="checkbox" id="fmin" onclick="cambio_fmin()">fmin
+    </label>
+    <label class="label" style="background-color: cyan;">
+      <input type="checkbox" id="fEs" onclick="cambio_fEs()">fEs
+    </label>
+    <label class="label" style="background-color: beige;">
+      <input type="checkbox" id="h1" onclick="cambio_h1()">h1
+    </label>
+    <label class="label" style="background-color: darkcyan;">
+      <input type="checkbox" id="H2" onclick="cambio_H2()">H2
+    </label>
+    <label class="label" style="background-color: magenta;">
+      <input type="checkbox" id="M3000" onclick="cambio_M3000()">M3000
+    </label>
+  </div>
+  <div class="img1"> </div>
+  <canvas id="myCanvas" width="650" height="500"></canvas>
+  <script type=text/javascript src="{{
+    url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+
+</html>
